@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+ <html>
+  <head>
+   <meta charset="utf-8">
+   <title>Primer ejemplo Firebase</title>
+  </head>
+ 
+  <body>  
+
+  <h1 id="holaMundo"> </h1>
+
+  <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAmTeR2u-zYen4_vbofyeapo-WpY8zyak4",
+      authDomain: "hola-mundo-b8fb0.firebaseapp.com",
+      databaseURL: "https://hola-mundo-b8fb0.firebaseio.com",
+      projectId: "hola-mundo-b8fb0",
+      storageBucket: "hola-mundo-b8fb0.appspot.com",
+      messagingSenderId: "692024371043"
+    };
+    firebase.initializeApp(config);
+
+    var holaMundo = document.getElementById('holaMundo');
+    var dbRef = firebase.database().ref().child('text');
+    dbRef.on('value', snap => holaMundo.innerText = snap.val() );
+
+  </script>
+  </body>
+</html>
